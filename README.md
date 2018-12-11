@@ -6,7 +6,7 @@ Our team was tasked with designing and building a dropping/release mechanism for
  
 ## Hardware Setup:
  
-Bill of Materials:
+### Bill of Materials:
 ![Alt Name](/doc/Bill_of_Materials_1.PNG)
 ![Alt Name](/doc/Bill_of_Materials_2.PNG)
 
@@ -60,7 +60,7 @@ Place the whole board inside of the job box, holes were made for solenoid wires,
 ![Alt Name](/doc/Picture11.png)
 
 ## Code:
-## MATLAB Code:
+### MATLAB Code:
 
 %% Final Project - Parachute Release Mechanism
 % Authors: Josh Hanenburg, Nick Hongo, Vinh Bui, & Weixun Wang
@@ -108,7 +108,7 @@ delete(a);                             	% Deletes serial port from memory
 clear a;                              	% Removes serial port from workspace
 disp('Serial Port is closed')         	% Displays text to command window
 
-## Arduino Code:
+### Arduino Code:
 
 const int ledPin = 13; // the pin that the LED is attached to
 int incomingByte;      // a variable to read incoming serial data into
@@ -145,9 +145,11 @@ void loop() {
 }
  
 ## Results:
- 
-   
- 
+![Alt Name](/doc/Results1.jpg)
+![Alt Name](/doc/Results2.jpg)
+![Alt Name](/doc/Results3.jpg)
+![Alt Name](/doc/Results4.jpg)
+![Alt Name](/doc/Results5.jpg)
 
 ## Future Work:
  
