@@ -21,6 +21,7 @@ Start by connecting one of the jumper wires to the “VIN” pin located next to
 
 ### Step 2 - Wire Solenoid to Breadboard
 Connect the solenoid jumper wires to the breadboard leaving some space between for the diode to be added. (Positive red PIN 22B, negative black PIN 22H) 
+
 ![Alt Name](/doc/Picture2.png)
 
 ### Step 3 - Place the diode on the breadboard
