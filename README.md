@@ -61,88 +61,10 @@ Place the whole board inside of the job box, holes were made for solenoid wires,
 
 ## Code:
 ### MATLAB Code:
-
-%% Final Project - Parachute Release Mechanism
-% Authors: Josh Hanenburg, Nick Hongo, Vinh Bui, & Weixun Wang
-% Date: 12/11/2018
-% Course: ENGR 114, Fall 2018
-% Description: This MATLAB code interfaces with Arduino software to operate a solenoid to open a release mechanism to drop a parachute. MATLAB software will ask a user to enter 'D' to drop the parachute, 'C' to close the solenoid or 'q' to quit the program.
-
-%% Clear command window, workspace variables, figure windows and connected devices
-clc;                             		% Clears command window
-clear;                              	% Clears all workspace variables
-close all;                            	% Closes all open figure windows
-delete(instrfindall);                   % Finds all visible and hidden serial port objects and closes them
-Port = 'COM6';                        	% Port the Arduino is connected to
-delete(instrfindall);                 	% Deletes any connected ports
-a = serial(Port);                    	% Creates the serial port
-fopen(a);                              	% Opens the serial port
-% Pause () for 1 second to make sure a connection is made
-pause(1);                           	
-out = instrfind('Port', Port);         	% See if the port specified is open
-disp('Serial Port is Open')         	% Display text to user that the port is open
-
-
-%% Ask for user input, D to open solenoid, L to close solenoid, q for quit
-while true                            	% Create while statement for true
-    % Ask user for input as a string
-    user_input = input('Type "D" to open the release mechanism , "C" to close the release mechanism or "q" to quit : ','s');
-    if strcmp(user_input,'D')         	% If statement with strcmp() logical statement
-       send_str = 'D';                	% Creates send_str variable as a string 'D'
-% fprintf() to send signal to Arduino software and display string text
-       fprintf(a, '%s', send_str);   
-    % Elseif statement with strcmp() logical statement   
-    elseif strcmp(user_input,'C')     	
-       send_str = 'C';                	% Creates send_str variable as a string 'C'
-% fprintf() to send signal to Arduino software and display string text
-       fprintf(a, '%s', send_str);   
-    % Elseif statement with strcmp() logical statement 	
-    elseif strcmp(user_input,'q')      	
-       break                          	% Terminates if statement
-    end                              	% Ends if statement
-end                                  	% Ends while statement
-
-%% Close the serial port
-fclose(a);                            	% Closes the serial port
-delete(a);                             	% Deletes serial port from memory
-clear a;                              	% Removes serial port from workspace
-disp('Serial Port is closed')         	% Displays text to command window
+[solenoid_MATLAB.m](solenoid_MATLAB.m)
 
 ### Arduino Code:
-
-const int ledPin = 13; // the pin that the LED is attached to
-int incomingByte;      // a variable to read incoming serial data into
-
-void setup() {
-  // initialize serial communication:
-  Serial.begin(9600);
-  // initialize the LED pin as an output:
-  pinMode(ledPin, OUTPUT);
-  // initialize the solenoid as an output through port 4
-  pinMode(4, OUTPUT);
-}
-
-void loop() {
-  // see if there's incoming serial data:
-  if (Serial.available() > 0) {
-    // read the oldest byte in the serial buffer:
-    incomingByte = Serial.read();
-    // if it's a D (ASCII 72), open the solenoid:
-    if (incomingByte == 'D') {
-      // turns the LED on red board on
-      digitalWrite(ledPin, HIGH);
-      // sets  the digital pin 4 on
-      digitalWrite(4, HIGH);
-    }
-    // if it's a C (ASCII 76) close the solenoid:
-    if (incomingByte == 'C') {
-      // turns the LED on red board off
-      digitalWrite(ledPin, LOW);
-      // sets the digital pin 4 off
-      digitalWrite(4, LOW);
-    }
-  }
-}
+[solenoid_ARDUINO.ino](solenoid_ARDUINO.ino)
  
 ## Results:
 ![Alt Name](/doc/Results1.jpg)
