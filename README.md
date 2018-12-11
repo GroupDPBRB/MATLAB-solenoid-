@@ -7,79 +7,57 @@ Our team was tasked with designing and building a dropping/release mechanism for
 ## Hardware Setup:
  
 Bill of Materials:
-Part Name	Purpose	Item Name	URL	Price
-Arduino
-(Received from ENGR 114 Class)	It can connect with a computer or laptop and run with Arduino and MATLAB code to operator sensors and/or lights	SparkFun RedBoard - Programmed with Arduino	https://www.sparkfun.com/products/13975	$ 19.95
-Breadboard
-(Received from ENGR 114 Class)	A solderless board that allows easy connection between hardware components for prototyping 	Breadboard - Self-Adhesive (White)
-	https://www.sparkfun.com/products/12615	$ 4.95
-USB cable
-(Received from ENGR 114 Class)	Transfers data from a computer or laptop to the red board and also can supply 1.5 volts of power to the red board	SparkFun USB Mini-B Cable - 6 Foot
-	https://www.sparkfun.com/products/11301	$ 3.95
-Job box
-(Received from ENGR 114 Class)	Storage box for hardware for easy transport and protection from weather	Job Box - Enclosure	https://www.sparkfun.com/products/11366	$ 8.95
-Solenoid
-(Received from ENGR 114 Class)
-	Open/close to release a parachute	Large push-pull solenoid	https://www.adafruit.com/product/413	$ 14.95
-Jumper wires
-(Received from ENGR 114 Class)
-	The core help connect the power from red board to breadboard and breadboard to the solenoid	Jumper Wires Standard 7" M/M - 30 AWG (30 Pack)	https://www.sparkfun.com/products/11026	$ 1.95
-Diode
-(Received from ENGR 114 Class)
-	Eliminates transient voltages caused when a magnetic coil (such as those found in a motor, relay, or solenoid) suddenly loses power. Without this diode in place, the transient voltage spikes can damage other elements of the circuit.	Schottky Diode	https://www.sparkfun.com/products/10926	$ 0.15
-Power transistor
-(Received from ENGR 114 Class)
-	For controlling the solenoid and the power from the low to high power	FQP30N06L 30N06L 30N06	https://www.aliexpress.com/item/Free-shipping-FQP30N06L-30N06L-in-stock/32234508850.html?aff_platform=promotion&cpt=1544242252747&sk=ZRFybm6&aff_trace_key=cdd48b5365ad424f889402622d51e227-1544242252747-04070-ZRFybm6&terminal_id=0e86cdc9f29642a9b35965df5e412761	$ 17.98 for 100 pieces
-330 Ohm resistor
-(Received from ENGR 114 Class)
-	Commonly used in breadboards and perf boards, these 330 Ohm resistors make excellent for solenoid current limiters and are great for general use	Resistor 330 Ohm 1/6 Watt PTH - 20 pack	https://www.sparkfun.com/products/11507	$ 0.95
-
+![Alt Name](/doc/Bill_of_Materials_1.PNG)
+![Alt Name](/doc/Bill_of_Materials_2.PNG)
 
 ## Hardware Schematic:
+![Alt Name](/doc/Fritzing_Diagram.png)
  
 ## Hookup Guide:
  
 ### Step 1- Powering the breadboard
 Start by connecting one of the jumper wires to the “VIN” pin located next to the GND (ground) on the RedBoard and running it over to the positive side of breadboard. Then run a wire from the GND pin on RedBoard over to negative rail on the breadboard.
-
- 
+![Alt Name](/doc/Picture1.png)
 
 ### Step 2 - Wire Solenoid to Breadboard
 Connect the solenoid jumper wires to the breadboard leaving some space between for the diode to be added. (Positive red PIN 22B, negative black PIN 22H) 
- 
+![Alt Name](/doc/Picture2.png)
 
 ### Step 3 - Place the diode on the breadboard
 The diode is placed from the negative side of the coil to the positive side.  Be careful when you connect the diode, it allows current to flow in one direction. Correct installation is crucial, otherwise there will be a short between the power and ground. Make sure the side with the silver stripe is connected to the positive side of power and the other side connected to the negative. (Silver stripe of diode to 22C remaining side to 22G)  
+![Alt Name](/doc/Picture3.png)
 
 ### Step 4 - Power for the solenoid
 On this step we run a jumper wire from the positive power side of the board to the positive solenoid wire. This will power the solenoid and we will be used as the low side to turn the solenoid on or off. (Positive rail to PIN 22A) 
+![Alt Name](/doc/Picture4.png)
 
 ### Step 5 - Placing the transistor on the breadboard
 The current draw of the solenoid is higher than a standard transistor can handle, therefore we will be using a transistor, P/N FQP30N06L. (PIN’s B13-B15, metal tab facing outside of board towards A PIN’s)  
- 
+![Alt Name](/doc/Picture5.png)
+
 ### Step 6 - Resistor connection
 Connect the resistors (3 - 330 Ohm resistors in a series) from the base of the resistor to the other side of the board. (PIN 15D to 15F)
- 
+![Alt Name](/doc/Picture6.png)
 
 ### Step 7- Connecting resistor to the breadboard
 Now that the current limiting resistors are in place, we can connect the it to pin 4 on digital line of RedBoard. (Jumper wire from PIN 15H to PIN 4 digital line of RedBoard)
- 
+![Alt Name](/doc/Picture7.png)
  
 ### Step 8 - Connect negative wire to solenoid 
 Next, we connect the negative wire of the solenoid to middle of the transistor with a jumper wire. (PIN 14C to 22I)
- 
+![Alt Name](/doc/Picture8.png)
 
 ### Step 9 - Connecting the transistor to the ground
 This step we connect the negative power on breadboard to PIN 13B of the transistor. (PIN 13B to negative rail)
- 
+![Alt Name](/doc/Picture9.png)
 
 ### Step 10 - Connecting solenoid and external power
 Now we can connect solenoid to the solenoid wires that come from the board, verifying strong connections are made to the jumper wires. (Positive red from solenoid to jumper wire PIN 22B, negative black from solenoid to 22H) 
- 
+![Alt Name](/doc/Picture10.png)
 
 ### Step 11 – Installing hardware into job box
 Place the whole board inside of the job box, holes were made for solenoid wires, USB cable, and external power. At this time, hardware setup is complete.
- 
+![Alt Name](/doc/Picture11.png)
 
 ## Code:
 ## MATLAB Code:
