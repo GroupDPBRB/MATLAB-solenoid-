@@ -1,10 +1,10 @@
-Parachute Release Mechanism
+# Parachute Release Mechanism
  
-Problem Statement:
+## Problem Statement:
 
-Our team was tasked with designing and building a dropping/release mechanism for the ENGR 101 parachute project. Our team integrated MATLAB and Arduino software to control an Arduino RedBoard, and solenoid to release a parachute by activation through MATLABís command window prompts.
+Our team was tasked with designing and building a dropping/release mechanism for the ENGR 101 parachute project. Our team integrated MATLAB and Arduino software to control an Arduino RedBoard, and solenoid to release a parachute by activation through MATLAB‚Äôs command window prompts.
  
-Hardware Setup:
+## Hardware Setup:
  
 Bill of Materials:
 Part Name	Purpose	Item Name	URL	Price
@@ -35,54 +35,54 @@ Power transistor
 	Commonly used in breadboards and perf boards, these 330 Ohm resistors make excellent for solenoid current limiters and are great for general use	Resistor 330 Ohm 1/6 Watt PTH - 20 pack	https://www.sparkfun.com/products/11507	$ 0.95
 
 
-Hardware Schematic:
+## Hardware Schematic:
  
-Hookup Guide:
+## Hookup Guide:
  
-Step 1- Powering the breadboard
-Start by connecting one of the jumper wires to the ìVINî pin located next to the GND (ground) on the RedBoard and running it over to the positive side of breadboard. Then run a wire from the GND pin on RedBoard over to negative rail on the breadboard.
+### Step 1- Powering the breadboard
+Start by connecting one of the jumper wires to the ‚ÄúVIN‚Äù pin located next to the GND (ground) on the RedBoard and running it over to the positive side of breadboard. Then run a wire from the GND pin on RedBoard over to negative rail on the breadboard.
 
  
 
-Step 2 - Wire Solenoid to Breadboard
+### Step 2 - Wire Solenoid to Breadboard
 Connect the solenoid jumper wires to the breadboard leaving some space between for the diode to be added. (Positive red PIN 22B, negative black PIN 22H) 
  
 
-Step 3 - Place the diode on the breadboard
+### Step 3 - Place the diode on the breadboard
 The diode is placed from the negative side of the coil to the positive side.  Be careful when you connect the diode, it allows current to flow in one direction. Correct installation is crucial, otherwise there will be a short between the power and ground. Make sure the side with the silver stripe is connected to the positive side of power and the other side connected to the negative. (Silver stripe of diode to 22C remaining side to 22G)  
 
-Step 4 - Power for the solenoid
+### Step 4 - Power for the solenoid
 On this step we run a jumper wire from the positive power side of the board to the positive solenoid wire. This will power the solenoid and we will be used as the low side to turn the solenoid on or off. (Positive rail to PIN 22A) 
 
-Step 5 - Placing the transistor on the breadboard
-The current draw of the solenoid is higher than a standard transistor can handle, therefore we will be using a transistor, P/N FQP30N06L. (PINís B13-B15, metal tab facing outside of board towards A PINís)  
+### Step 5 - Placing the transistor on the breadboard
+The current draw of the solenoid is higher than a standard transistor can handle, therefore we will be using a transistor, P/N FQP30N06L. (PIN‚Äôs B13-B15, metal tab facing outside of board towards A PIN‚Äôs)  
  
-Step 6 - Resistor connection
+### Step 6 - Resistor connection
 Connect the resistors (3 - 330 Ohm resistors in a series) from the base of the resistor to the other side of the board. (PIN 15D to 15F)
  
 
-Step 7- Connecting resistor to the breadboard
+### Step 7- Connecting resistor to the breadboard
 Now that the current limiting resistors are in place, we can connect the it to pin 4 on digital line of RedBoard. (Jumper wire from PIN 15H to PIN 4 digital line of RedBoard)
  
  
-Step 8 - Connect negative wire to solenoid 
+### Step 8 - Connect negative wire to solenoid 
 Next, we connect the negative wire of the solenoid to middle of the transistor with a jumper wire. (PIN 14C to 22I)
  
 
-Step 9 - Connecting the transistor to the ground
+### Step 9 - Connecting the transistor to the ground
 This step we connect the negative power on breadboard to PIN 13B of the transistor. (PIN 13B to negative rail)
  
 
-Step 10 - Connecting solenoid and external power
+### Step 10 - Connecting solenoid and external power
 Now we can connect solenoid to the solenoid wires that come from the board, verifying strong connections are made to the jumper wires. (Positive red from solenoid to jumper wire PIN 22B, negative black from solenoid to 22H) 
  
 
-Step 11 ñ Installing hardware into job box
+### Step 11 ‚Äì Installing hardware into job box
 Place the whole board inside of the job box, holes were made for solenoid wires, USB cable, and external power. At this time, hardware setup is complete.
  
 
-Code:
-MATLAB Code:
+## Code:
+## MATLAB Code:
 
 %% Final Project - Parachute Release Mechanism
 % Authors: Josh Hanenburg, Nick Hongo, Vinh Bui, & Weixun Wang
@@ -130,7 +130,7 @@ delete(a);                             	% Deletes serial port from memory
 clear a;                              	% Removes serial port from workspace
 disp('Serial Port is closed')         	% Displays text to command window
 
-Arduino Code:
+## Arduino Code:
 
 const int ledPin = 13; // the pin that the LED is attached to
 int incomingByte;      // a variable to read incoming serial data into
@@ -166,15 +166,15 @@ void loop() {
   }
 }
  
-Results:
+## Results:
  
    
  
 
-Future Work:
+## Future Work:
  
 Unfortunately, we did not integrate the red button to open/close the solenoid as there was a time delay with the solenoid when the button was pressed. In the future this could be something that could be integrated and perhaps the delay could be removed with MATLAB and/or Arduino coding.
  
-License
+# License
 GNU General Public License v3.0
 
